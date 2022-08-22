@@ -36,7 +36,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false,
+    fallback: "blocking", // fallback true 일 경우 빈 페이지가 즉시 반환 / blocking 일 경우 페이지가 미리 생성될때까지 볼 수 없고 완성된 페이지가 제공
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
